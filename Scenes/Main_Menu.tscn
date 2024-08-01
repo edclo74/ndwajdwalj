@@ -1,0 +1,128 @@
+[gd_scene load_steps=14 format=3 uid="uid://qpbvjvf5l7a3"]
+
+[ext_resource type="Script" path="res://Main_Menu.gd" id="1_yj87d"]
+[ext_resource type="Texture2D" uid="uid://btvowrcuv284s" path="res://assets/Main_menu_gangterasdasd.aseprite.png" id="2_1npb6"]
+[ext_resource type="Texture2D" uid="uid://3uovi17al5fc" path="res://assets/Play Button.aseprite.png" id="2_mkhwr"]
+[ext_resource type="Texture2D" uid="uid://bb20u68d4kiya" path="res://assets/Gun_MainMenu.aseprite.png" id="3_73g3l"]
+[ext_resource type="AudioStream" uid="uid://jrq3hai6lwm4" path="res://audiomass-output (1).mp3" id="5_un26a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n54gp"]
+atlas = ExtResource("2_1npb6")
+region = Rect2(1920, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03hss"]
+atlas = ExtResource("2_1npb6")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twfxh"]
+atlas = ExtResource("2_1npb6")
+region = Rect2(0, 1080, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3766"]
+atlas = ExtResource("2_1npb6")
+region = Rect2(0, 2160, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kv4ef"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n54gp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03hss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twfxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3766")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koamd"]
+atlas = ExtResource("3_73g3l")
+region = Rect2(0, 31, 47, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbrdb"]
+atlas = ExtResource("3_73g3l")
+region = Rect2(0, 3, 47, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tnne0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koamd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbrdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koamd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Main_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -8.0
+offset_right = -1.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.002, 1)
+script = ExtResource("1_yj87d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(685.131, 395)
+scale = Vector2(0.712636, 0.716667)
+sprite_frames = SubResource("SpriteFrames_kv4ef")
+autoplay = "default"
+
+[node name="Play_Button" type="Button" parent="."]
+layout_mode = 2
+offset_left = 1108.78
+offset_top = 286.0
+offset_right = 1276.78
+offset_bottom = 384.0
+icon = ExtResource("2_mkhwr")
+
+[node name="Options_Button" type="Button" parent="."]
+layout_mode = 2
+offset_left = 1030.94
+offset_top = 505.0
+offset_right = 1318.94
+offset_bottom = 605.0
+text = "Options"
+
+[node name="Quit_Button" type="Button" parent="."]
+layout_mode = 2
+offset_left = 1053.89
+offset_top = 622.0
+offset_right = 1286.89
+offset_bottom = 756.0
+text = "Quit
+"
+
+[node name="Gun" type="AnimatedSprite2D" parent="."]
+position = Vector2(525.808, 218.12)
+scale = Vector2(1.28825, 1.23724)
+sprite_frames = SubResource("SpriteFrames_tnne0")
+offset = Vector2(24, 15)
+
+[node name="Musik" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_un26a")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="Play_Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Options_Button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Quit_Button" to="." method="_on_quit_button_pressed"]

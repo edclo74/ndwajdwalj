@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj8qintfxmlf4"]
+
+[ext_resource type="Texture2D" uid="uid://dycpedigob8ck" path="res://assets/TileMap1.aseprite.png" id="1_qiuyv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_53841"]
+texture = ExtResource("1_qiuyv")
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+1:3/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+2:3/0 = 0
+4:2/0 = 0
+4:3/0 = 0
+4:4/0 = 0
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_rah82"]
+sources/0 = SubResource("TileSetAtlasSource_53841")
+
+[node name="endless_mode" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_rah82")
+format = 2
+layer_1/tile_data = PackedInt32Array()
